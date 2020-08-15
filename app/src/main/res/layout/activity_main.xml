@@ -10,7 +10,7 @@
 
 
     <EditText
-        android:id="@+id/usernanme"
+        android:id="@+id/usernanmeid"
         android:layout_width="250dp"
         android:layout_height="50dp"
         android:hint="Username"
