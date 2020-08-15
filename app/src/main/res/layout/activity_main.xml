@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".MainActivity">
+
+
+    <EditText
+        android:id="@+id/usernanme"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Username"
+        android:layout_marginLeft="20dp"
+        android:textSize="25dp"
+        android:background="@drawable/rounded_radius"
+
+        android:textAlignment="center"
+
+        ></EditText>
+    <EditText
+        android:id="@+id/password"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:hint="Password"
+        android:textSize="25dp"
+
+        android:background="@drawable/rounded_radius"
+        android:textAlignment="center"
+
+        ></EditText>
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_width="100dp"
+        android:textSize="20sp"
+        android:background="@drawable/rounded_radius"
+        android:layout_height="50dp"
+        android:text="Login"/>
+
+    <LinearLayout
+        android:layout_below="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Don't have any account?"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/rounded_radius"/>
+
+        
+        
+    </LinearLayout>
+
+</RelativeLayout>
