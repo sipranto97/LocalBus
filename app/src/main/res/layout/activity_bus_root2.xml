@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background"
+    android:padding="10dp"
+    tools:context=".BusRootActivity">
+
+
+
+        <TextView
+            android:paddingVertical="20dp"
+            android:text="Abdullahpur to Motijheel"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:fontFamily="sans-serif"
+            android:textSize="35sp"
+            android:textColor="@android:color/white"/>
+
+    <TableRow
+        android:id="@+id/row1"
+        android:paddingBottom="15dp">
+
+        <TextView
+            android:text="Bus Name"
+            android:paddingRight="30dp"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="Fare"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:paddingRight="30dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="Root"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            />
+
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row2"
+        android:paddingBottom="15dp"
+        >
+        <TextView
+            android:text="Green Dhaka"
+            android:paddingRight="30dp"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="60 TK"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:paddingRight="30dp"
+            />
+            <Button
+                android:layout_height="wrap_content"
+                android:text="Veiw Root"
+                android:textColor="#293241"
+                android:textSize="15sp"
+                android:background="@drawable/root_button"></Button>
+
+    </TableRow>
+    <TableRow
+        android:id="@+id/row3"
+        android:paddingBottom="15dp"
+
+
+        >
+
+        <TextView
+            android:text="BRTC"
+            android:paddingRight="30dp"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="40 TK"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:paddingRight="30dp"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:text="Veiw Root"
+            android:textColor="#293241"
+            android:textSize="15sp"
+            android:background="@drawable/root_button"></Button>
+
+
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/row4"
+        android:paddingBottom="15dp"
+
+
+        >
+
+        <TextView
+            android:text="Shatabdi"
+            android:paddingRight="50dp"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:text="60 TK"
+            android:fontFamily="serif-monospace"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:paddingRight="50dp"
+            />
+        <Button
+            android:layout_height="wrap_content"
+            android:text="Veiw Root"
+            android:textColor="#293241"
+            android:textSize="15sp"
+            android:background="@drawable/root_button"></Button>
+
+
+    </TableRow>
+
+
+
+
+
+
+
+
+
+</TableLayout>
+
+
+
+
+
+

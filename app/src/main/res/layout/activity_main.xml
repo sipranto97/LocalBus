@@ -39,6 +39,7 @@
         android:layout_below="@+id/password"
         android:layout_marginTop="25dp"
         android:layout_marginLeft="20dp"
+        android:onClick="userLocation"
         android:layout_width="100dp"
         android:textSize="20sp"
         android:background="@drawable/rounded_radius"

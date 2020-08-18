@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Local Bus</string>
+    <string name="title_activity_user_location">Map</string>
 </resources>

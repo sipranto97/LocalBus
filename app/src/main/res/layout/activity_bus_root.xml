@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+android:background="@drawable/gradient_background"
+tools:context=".BusRoot">
+
+
+    <TableRow
+        android:id="@+id/title"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:text="Abdullahpur to Motijheel"
+            android:textSize="35dp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-condensed-medium"
+            />
+    </TableRow>
+    <TableRow
+        android:id="@+id/indexrow"
+        android:layout_marginTop="20dp"
+        >
+
+        <TextView
+            android:layout_width="277dp"
+            android:layout_height="match_parent"
+            android:fontFamily="serif-monospace"
+            android:text="Bus Name"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:fontFamily="serif-monospace"
+            android:text="Bus Name"
+            android:textColor="@android:color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </TableRow>
+
+
+
+
+</TableLayout>
+
+
+
+
+
+
