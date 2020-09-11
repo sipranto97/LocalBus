@@ -1,27 +1,25 @@
-
-
 <resources>
-<string name="app_name">Local Bus</string>
-<string-array name="Route">
-    <item>Farmgate</item>
-    <item>Abdullahpur</item>
-    <item>Banani</item>
-    <item>Azimpur</item>
-    <item>Paltan</item>
-    <item>Gabtoli</item>
-    <item>Shyamoli</item>
-    <item>Khilkhet</item>
-    <item>Airport</item>
-    <item>Mirpur-10</item>
-    <item>Mirpur-1</item>
-    <item>Mirpur-11</item>
-    <item>Mirpur-2</item>
-    <item>Asadgate</item>
-    <item>Tejgaon</item>
-    <item>Shahbag</item>
-    <item>Gulistan</item>
-    <item>Motijheel</item>
-    <item>Mohakhali</item>
+    <string name="app_name">Local Bus</string>
+    <string-array name="Route">
+        <item>Farmgate</item>
+        <item>Abdullahpur</item>
+        <item>Banani</item>
+        <item>Azimpur</item>
+        <item>Paltan</item>
+        <item>Gabtoli</item>
+        <item>Shyamoli</item>
+        <item>Khilkhet</item>
+        <item>Airport</item>
+        <item>Mirpur-10</item>
+        <item>Mirpur-1</item>
+        <item>Mirpur-11</item>
+        <item>Mirpur-2</item>
+        <item>Asadgate</item>
+        <item>Tejgaon</item>
+        <item>Shahbag</item>
+        <item>Gulistan</item>
+        <item>Motijheel</item>
+        <item>Mohakhali</item>
 
-</string-array>
+    </string-array>
 </resources>
