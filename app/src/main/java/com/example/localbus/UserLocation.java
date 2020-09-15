@@ -33,8 +33,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserLocation extends FragmentActivity implements OnMapReadyCallback {
 
@@ -73,12 +76,28 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
                 Log.d(TAG, "onLocationResult: "+location.toString());
 
             }
-
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.addMarker(new MarkerOptions().position(latLng));
-            mMap.setMinZoomPreference(15);
             DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Current Location");
-            databaseReference.removeValue();
+            ValueEventListener listener = databaseReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Double latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                    Double longitude = dataSnapshot.child("longitude").getValue(Double.class);
+
+                    LatLng location = new LatLng(latitude,longitude);
+
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+                    mMap.addMarker(new MarkerOptions().position(location));
+                    mMap.setMinZoomPreference(15);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+
 
 
         }
@@ -157,12 +176,16 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
     private void startLocationUpdates(){
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
+
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+
         }
     }
     private void stopLocationUpdates(){
 
+
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+
 
 
     }
