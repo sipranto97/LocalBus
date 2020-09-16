@@ -34,6 +34,7 @@ public class search extends AppCompatActivity {
     private ProgressBar progressBar;
     public double latitude ;
     public double longitude ;
+    public String myLoc = "User1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +63,6 @@ public class search extends AppCompatActivity {
     public void all_bus_location(View v)
     {
 
-        Null init = new Null(0.0,0.0);
-
-        FirebaseDatabase.getInstance().getReference("Current Location")
-                .setValue(init);
         Intent mapIntent = new Intent(this,UserLocation.class);
         startActivity(mapIntent);
     }

@@ -27,6 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -43,14 +44,20 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private LatLng latLng;
-
+    private  int i;
+    private String name="Current Location";
+    private String nameArray []= {"User1","User2","User3","User4"};
+    private String myLocationName;
     private static final String TAG = "UserLocation";
     int LOCATION_REQUEST_CODE = 10001;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
-
+    search s = new search();
 
     LocationCallback locationCallback = new LocationCallback(){
+
+
+
         @Override
         public void onLocationResult(LocationResult locationResult) {
             if(locationResult == null){
@@ -59,10 +66,15 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
 
             for(Location location :locationResult.getLocations()){
                 mMap.clear();
+
+
                 latLng = new LatLng(location.getLatitude(),location.getLongitude());
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                mMap.addMarker(new MarkerOptions().position(latLng));
+                mMap.setMinZoomPreference(15);
                 Helper helper = new Helper(location.getLatitude(),
-                        location.getLongitude());
-                FirebaseDatabase.getInstance().getReference("Current Location")
+                        location.getLongitude(),s.myLoc,1);
+                FirebaseDatabase.getInstance().getReference( s.myLoc)
                         .setValue(helper).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -76,25 +88,38 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
                 Log.d(TAG, "onLocationResult: "+location.toString());
 
             }
-            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Current Location");
-            ValueEventListener listener = databaseReference.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Double latitude = dataSnapshot.child("latitude").getValue(Double.class);
-                    Double longitude = dataSnapshot.child("longitude").getValue(Double.class);
+            for (i=0;i<4;i++) {
+                if (nameArray[i] != s.myLoc) {
+                    final DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference(nameArray[i]);
+                    ValueEventListener listener = databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                    LatLng location = new LatLng(latitude,longitude);
+                                int status = dataSnapshot.child("status").getValue(Integer.class);
 
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-                    mMap.addMarker(new MarkerOptions().position(location));
-                    mMap.setMinZoomPreference(15);
+                                if(status == 1) {
+
+                                    Double latitude = dataSnapshot.child("latitude").getValue(Double.class);
+                                    Double longitude = dataSnapshot.child("longitude").getValue(Double.class);
+
+                                    LatLng location = new LatLng(latitude, longitude);
+
+
+                                    mMap.addMarker(new MarkerOptions().position(location).title("EnergyPack").icon(BitmapDescriptorFactory.fromResource(R.drawable.bus1)).title(s.myLoc));
+
+                                }
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
                 }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
+            }
 
 
 
@@ -131,6 +156,9 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onStart() {
         super.onStart();
+
+
+
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED){
             //getLastLocation();
@@ -177,6 +205,7 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
 
+
             fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
 
         }
@@ -185,6 +214,12 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
 
 
         fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+
+            Helper init = new Helper(0.0,
+                    0.0, s.myLoc, 0);
+            FirebaseDatabase.getInstance().getReference(s.myLoc)
+                    .setValue(init);
+
 
 
 
