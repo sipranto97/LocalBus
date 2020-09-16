@@ -52,7 +52,7 @@ public class UserLocation extends FragmentActivity implements OnMapReadyCallback
     int LOCATION_REQUEST_CODE = 10001;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
-    search s = new search();
+    Login s = new Login();
 
     LocationCallback locationCallback = new LocationCallback(){
 
